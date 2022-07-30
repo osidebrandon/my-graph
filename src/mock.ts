@@ -1,7 +1,5 @@
-import { Graph } from "./components/Graph/types";
 
-
-const mockGraphData: Graph = {
+export default {
     nodes: [
         {
             id: '1',
@@ -51,5 +49,3 @@ const mockGraphData: Graph = {
         },
     ],
 }
-
-export default mockGraphData;

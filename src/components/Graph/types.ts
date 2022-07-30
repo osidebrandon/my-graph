@@ -1,5 +1,23 @@
 
-// Generates //
+// Required Props //
+
+export type GraphProps = {
+    nodes: Node[];
+    edges: Edge[];
+    renderNode: () => any;
+    renderEdge: () => any;
+};
+export type Node = {
+    id: string;
+    data: any;
+};
+export type Edge = {
+    id: string;
+    fromId: string;
+    toId: string;
+};
+
+// For Dumb UI Components //
 
 export type NodeUIMap = {
     [id: string]: NodeUI;
@@ -22,19 +40,3 @@ export type Point = {
     x: number;
     y: number;
 }
-
-// Givens //
-
-export type Graph = {
-    nodes: Node[];
-    edges: Edge[];
-};
-export type Node = {
-    id: string;
-    data: any;
-};
-export type Edge = {
-    id: string;
-    fromId: string;
-    toId: string;
-};

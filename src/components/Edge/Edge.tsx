@@ -1,3 +1,4 @@
+import { render } from '@testing-library/react';
 import styled from 'styled-components';
 import { EdgeUI } from '../Graph/types';
 
@@ -11,34 +12,18 @@ const EdgeLayout = styled.div.attrs(({ position, length, rotation }: EdgeUI) => 
 }))<EdgeUI>`
   display: inline-block;
   position: absolute;
-  height: 5px;
   z-index: 0;
-  background-color: darkgrey;
 `;
-
-// const EdgeLayout = styled.div<EdgeUI>`
-//   display: inline-block;
-//   position: absolute;
-//   left: ${props => props.position.x}px;
-//   top: ${props => props.position.y}px;
-//   width: ${props => props.length}px;
-//   height: 5px;
-//   z-index: 0;
-
-//   transform: 
-//     translate(-50%, -50%) 
-//     rotate(${props => props.rotation}rad);
-//   background-color: darkgrey;
-// `;
 
 type EdgeComponentProps = {
     edgeUI: EdgeUI;
+    render: () => any;
 }
-const EdgeComponent = ({ edgeUI }: EdgeComponentProps) => {
+const EdgeComponent = ({ edgeUI, render }: EdgeComponentProps) => {
     return (
         <EdgeLayout
             {...edgeUI}
-        ></EdgeLayout>
+        >{render()}</EdgeLayout>
     );
 }
 

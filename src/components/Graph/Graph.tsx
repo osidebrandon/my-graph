@@ -5,7 +5,7 @@ import {
     Edge,
     EdgeUI,
     EdgeUIMap,
-    Graph,
+    GraphProps,
     Node,
     NodeUI,
     NodeUIMap,
@@ -13,8 +13,8 @@ import {
 } from "./types";
 
 const GraphComponent = ({
-    nodes, edges
-}: Graph) => {
+    nodes, edges, renderNode, renderEdge
+}: GraphProps) => {
 
     const [nodesUI, setNodesUI] = useState<NodeUIMap>({});
     const [edgesUI, setEdgesUI] = useState<EdgeUIMap>({});
@@ -118,6 +118,7 @@ const GraphComponent = ({
                 return (
                     <NodeComponent
                         key={nodeId}
+                        render={renderNode}
                         onPositionChange={handleNodePositionChange}
                         nodeUI={nodesUI[nodeId]}
                     />
@@ -127,6 +128,7 @@ const GraphComponent = ({
                 return (
                     <EdgeComponent
                         key={edgeId}
+                        render={renderEdge}
                         edgeUI={edgesUI[edgeId]}
                     />
                 );

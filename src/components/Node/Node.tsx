@@ -1,3 +1,4 @@
+import { render } from '@testing-library/react';
 import { useRef } from 'react';
 import Draggable from 'react-draggable';
 import styled from 'styled-components';
@@ -6,20 +7,16 @@ import { NodeUI, Point } from '../Graph/types';
 const NodeLayout = styled.div<NodeUI>`
   display: inline-block;
   position: absolute;
-  width: 50px;
-  height: 50px;
-  background-color: lightskyblue;
-  box-shadow: 0 0 2px 1px grey;
-  border-radius: 5px;
   z-index: 1;
 `;
 
 type NodeComponentProps = {
     nodeUI: NodeUI;
+    render: () => any;
     onPositionChange: (nodeUI: NodeUI, newPosition: Point) => void;
 }
 const NodeComponent = ({ 
-    nodeUI, onPositionChange 
+    nodeUI, onPositionChange, render
 }: NodeComponentProps) => {
 
     const nodeRef = useRef(null);
@@ -47,7 +44,7 @@ const NodeComponent = ({
             <NodeLayout
                 ref={nodeRef}
                 {...nodeUI}>
-                {nodeUI.id}
+                {render()}
             </NodeLayout>
         </Draggable>
     );

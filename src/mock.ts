@@ -6,13 +6,25 @@ const mockGraphData: Graph = {
         {
             id: '1',
             data: {
-                name: 'File 1'
+                name: 'Node 1'
             },
         },
         {
             id: '2',
             data: {
-                name: 'File 2'
+                name: 'Node 2'
+            },
+        },
+        {
+            id: '3',
+            data: {
+                name: 'Node 3'
+            },
+        },
+        {
+            id: '4',
+            data: {
+                name: 'Node 4'
             },
         },
     ],
@@ -21,7 +33,22 @@ const mockGraphData: Graph = {
             id: '1-2',
             fromId: '1',
             toId: '2',
-        }
+        },
+        {
+            id: '1-3',
+            fromId: '1',
+            toId: '3',
+        },
+        {
+            id: '2-3',
+            fromId: '2',
+            toId: '3',
+        },
+        {
+            id: '2-4',
+            fromId: '2',
+            toId: '4',
+        },
     ],
 }
 

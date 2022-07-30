@@ -10,6 +10,7 @@ export type EdgeUIMap = {
 export type NodeUI = {
     id: string;
     position: Point;
+    initialPosition: Point;
 }
 export type EdgeUI = {
     id: string;

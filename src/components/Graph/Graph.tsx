@@ -31,12 +31,14 @@ const GraphComponent = ({
     const generateNodesUI = () => {
         const newNodesUIMap: NodeUIMap = {};
         nodes.map((node: Node, index: number) => {
+            const initialPosition = {
+                x: 100 + index * 200,
+                y: 100,
+            };
             const newNodeUI: NodeUI = {
                 id: node.id,
-                position: {
-                    x: 100 + index * 200,
-                    y: 100,
-                },
+                initialPosition,
+                position: initialPosition,
             };
             newNodesUIMap[node.id] = newNodeUI;
         });
@@ -99,12 +101,24 @@ const GraphComponent = ({
         );
     }
 
+    const handleNodePositionChange = (
+        nodeUI: NodeUI, newPosition: Point
+    ): void => {
+        const newNodesUI: NodeUIMap = {...nodesUI};
+        newNodesUI[nodeUI.id] = {
+            ...nodeUI,
+            position: newPosition,
+        };
+        setNodesUI(newNodesUI);
+    }
+
     return (
         <>
             {Object.keys(nodesUI).map((nodeId: string) => {
                 return (
                     <NodeComponent
                         key={nodeId}
+                        onPositionChange={handleNodePositionChange}
                         nodeUI={nodesUI[nodeId]}
                     />
                 );

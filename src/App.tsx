@@ -7,12 +7,6 @@ const Layout = styled.div``;
 const mockNodes = mockGraphData.nodes;
 const mockEdges = mockGraphData.edges;
 
-/* 
-  Make these into actual components for the job.
-
-  Testing works with only styles, but if 
-  needed functionality, create components.
-*/
 const NodeStyled = styled.div`
   width: 50px;
   height: 50px;

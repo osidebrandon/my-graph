@@ -13,7 +13,7 @@ import {
 } from "./types";
 
 const GraphComponent = ({
-    nodes, edges, renderNode, renderEdge
+    nodesMap, edgesMap, renderNode, renderEdge
 }: GraphProps) => {
 
     const [nodesUI, setNodesUI] = useState<NodeUIMap>({});
@@ -30,7 +30,8 @@ const GraphComponent = ({
 
     const generateNodesUI = () => {
         const newNodesUIMap: NodeUIMap = {};
-        nodes.map((node: Node, index: number) => {
+        Object.keys(nodesMap).map((nodeId: string, index: number) => {
+            const node = nodesMap[nodeId];
             const initialPosition = {
                 x: 100 + index * 200,
                 y: 100,
@@ -47,7 +48,8 @@ const GraphComponent = ({
 
     const generateEdgesUI = () => {
         const newEdgesUIMap: EdgeUIMap = {};
-        edges.map((edge: Edge) => {
+        Object.keys(edgesMap).map((edgeId: string) => {
+            const edge = edgesMap[edgeId];
             const newEdgeUI: EdgeUI = {
                 id: edge.id,
                 position: generateEdgePosition(

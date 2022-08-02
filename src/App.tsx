@@ -23,8 +23,8 @@ const App = () => {
   return (
     <Layout>
       <GraphComponent 
-        nodes={mockNodes}
-        edges={mockEdges}
+        nodesMap={mockNodes}
+        edgesMap={mockEdges}
         renderNode={() => <NodeStyled />}
         renderEdge={() => <EdgeStyled />}
       />

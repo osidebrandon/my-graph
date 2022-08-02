@@ -2,11 +2,17 @@
 // Required Props //
 
 export type GraphProps = {
-    nodes: Node[];
-    edges: Edge[];
+    nodesMap: NodeMap;
+    edgesMap: EdgeMap;
     renderNode: () => any;
     renderEdge: () => any;
 };
+export type NodeMap = {
+    [id: string]: Node;
+}
+export type EdgeMap = {
+    [id: string]: Edge;
+}
 export type Node = {
     id: string;
     data: any;
